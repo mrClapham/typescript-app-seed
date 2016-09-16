@@ -1,0 +1,27 @@
+{
+  "name": "typescripttest",
+  "version": "1.0.0",
+  "description": "An ap seed for typescript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "typescript"
+  ],
+  "author": "Graham Clapham <clapham.graham@gmail.com> (http://grahamclapham.co.uk/)",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.14.0",
+    "babel-loader": "^6.2.5",
+    "karma": "^1.3.0",
+    "karma-chrome-launcher": "^2.0.0",
+    "karma-jasmine": "^1.0.2",
+    "karma-typescript-preprocessor": "^0.2.1",
+    "ts-loader": "^0.8.2",
+    "typescript": "^1.8.10"
+  },
+  "dependencies": {
+    "webpack": "^1.13.2"
+  }
+}
