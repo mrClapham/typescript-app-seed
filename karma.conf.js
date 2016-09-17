@@ -1,3 +1,6 @@
+var webpackConfig = require('./webpack.config');
+webpackConfig.entry = {};
+
 // Karma configuration
 // Generated on Fri Sep 16 2016 16:40:58 GMT+0100 (BST)
 
@@ -7,26 +10,45 @@ module.exports = function(config) {
     // base path that will be used to resolve all patterns (eg. files, exclude)
     basePath: '',
 
-
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
     frameworks: ['jasmine'],
 
-
+    plugins : [
+        'karma-chrome-launcher',
+        'karma-jasmine',
+        'karma-webpack'
+            ],
     // list of files / patterns to load in the browser
     files: [
       'tests/*-test.js'
     ],
-
-
     // list of files to exclude
     exclude: [
     ],
 
-
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
+      'dist/output.js': [ 'webpack' ],
+      'tests/*-test.js': [ 'webpack' ]
+    },
+
+    typescriptPreprocessor: {
+      // options passed to the typescript compiler 
+      options: {
+        sourceMap: false, // (optional) Generates corresponding .map file. 
+        target: 'es5', // (optional) Specify ECMAScript target version: 'ES3' (default), or 'ES5' 
+        module: 'commonjs', // (optional) Specify module code generation: 'commonjs' or 'amd' 
+        noImplicitAny: true, // (optional) Warn on expressions and declarations with an implied 'any' type. 
+        noResolve: true, // (optional) Skip resolution and preprocessing. 
+        removeComments: true, // (optional) Do not emit comments to output. 
+        concatenateOutput: false // (optional) Concatenate and emit output to single file. By default true if module option is omited, otherwise false. 
+      },
+      // transforming the filenames 
+      transformPath: function(path) {
+        return path.replace(/\.ts$/, '.js');
+      }
     },
 
 
@@ -64,6 +86,22 @@ module.exports = function(config) {
 
     // Concurrency level
     // how many browser should be started simultaneous
-    concurrency: Infinity
+    concurrency: Infinity,
+
+      webpack: webpackConfig,
+          // karma watches the test entry points
+          // (you don't need to specify the entry option)
+          // webpack watches dependencies
+
+          // webpack configuration
+
+
+      webpackMiddleware: {
+          // webpack-dev-middleware configuration
+          // i. e.
+          noInfo: true
+      }
+
+
   })
 }
