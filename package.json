@@ -1,16 +1,16 @@
 {
-  "name": "typescripttest",
+  "name": "typescript-app-seed",
   "version": "1.0.0",
-  "description": "An ap seed for typescript",
+  "description": "An app seed for typescript",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "typescript"
+    "typescript", "app-seed"
   ],
   "author": "Graham Clapham <clapham.graham@gmail.com> (http://grahamclapham.co.uk/)",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "babel-core": "^6.14.0",
     "babel-loader": "^6.2.5",
